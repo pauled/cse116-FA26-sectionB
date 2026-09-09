@@ -18,6 +18,15 @@ public class Player{
     public void attack(Player other){
         other.takeDamage(this.damageDealt);
     }
+    public int getHP(){
+        return this.HP;
+    }
+    public int getMaxHP(){
+        return this.maxHP;
+    }
+    public int getDamageDealt(){
+        return this.damageDealt;
+    }
 
     public static void main(String[] args) {
         Player p1=new Player(10);
