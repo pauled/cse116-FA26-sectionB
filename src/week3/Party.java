@@ -14,7 +14,7 @@ public class Party{
     public void addCharacter(Character mem){
         this.members.add(mem);
     }
-    public void winBatle(int xp){
+    public void winBattle(int xp){
         this.battlesWon++;
         for (int x=0; x<this.members.size(); x++){
             this.members.get(x).winBattle(xp);
