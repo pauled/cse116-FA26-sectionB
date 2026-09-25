@@ -37,6 +37,12 @@ public class LLN<T>{
             this.next.insert(value, loc-1);
         }
     }
+    public LLN getNext(){
+        return this.next;
+    }
+    public void setNext(LLN<T> newNext){
+        this.next=newNext;
+    }
     public boolean find(T toFind){
         if (this.value.equals(toFind)){
             return true;
