@@ -1,8 +1,8 @@
 package week6inheritance;
 
 public class GameItem{
-    private double xLoc;
-    private double yLoc;
+    protected  double xLoc;
+    protected  double yLoc;
 
     public GameItem(double x, double y){
         this.xLoc=x;
@@ -14,5 +14,9 @@ public class GameItem{
     public double getYLoc(){
         return this.yLoc;
     }
-    
+    public String toString(){
+        String out="("+this.xLoc+","+this.yLoc+")";
+        return out;
+    }
+
 }
