@@ -1,6 +1,6 @@
 package week6inheritance;
 
-public class HealthPotion extends GameItem{
+public class HealthPotion extends GameItem implements Usable{
     private int increase;
 
     public HealthPotion(double x,double y,int increase){
@@ -11,6 +11,9 @@ public class HealthPotion extends GameItem{
         String out=super.toString();
         out+=" health added: "+this.increase;
         return out;
+    }
+    public void use(Player player){
+        player.takeDamage(-this.increase);
     }
     public static void main(String[] args) {
         HealthPotion hp1=new HealthPotion(1,2,3);

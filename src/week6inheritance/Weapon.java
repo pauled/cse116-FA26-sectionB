@@ -1,6 +1,6 @@
 package week6inheritance;
 
-public class Weapon extends GameItem{
+public class Weapon extends GameItem implements Usable{
     private double damage;
 
     public Weapon(double x,double y,double damage){
@@ -11,6 +11,9 @@ public class Weapon extends GameItem{
         String out=super.toString();
         out+=" damage: "+this.damage;
         return out;
+    }
+    public void use(Player player){
+        player.takeDamage((int)this.damage);
     }
     public static void main(String[] args) {
         Weapon w1=new Weapon(1,2,3);
