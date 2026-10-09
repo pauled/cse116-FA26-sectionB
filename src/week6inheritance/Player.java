@@ -52,6 +52,7 @@ public class Player extends GameItem{
         Player p3=p1;
         p3.takeDamage(5);
         p1.attack(p2);
+        
     }
 
 }
