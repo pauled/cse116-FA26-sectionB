@@ -41,9 +41,13 @@ public class BTN<A>{
             return "";
         } else {
             String out="";
-            out+=inOrderTraversal(node.left);
+            if (node.left!=null){
+                out+=inOrderTraversal(node.left);
+            }
             out+=node.value.toString()+" ";
-            out+=inOrderTraversal(node.right);
+            if (node.right!=null){
+                out+=inOrderTraversal(node.right);
+            }
             return out;
         }
     }
@@ -56,11 +60,11 @@ public class BTN<A>{
         root.left.right=new BTN<>(4,null,null);
         root.right.left=new BTN<>(7,null,null);
         root.right.right=new BTN<>(14,null,null);
-        String temp=root.preOrderTraversal(root);
-        System.out.println("preOrder: "+temp);
-        temp=root.postOrderTraversal(root);
-        System.out.println("postOrder: "+temp);
-        temp=root.inOrderTraversal(root);
+        //String temp=root.preOrderTraversal(root);
+        //System.out.println("preOrder: "+temp);
+        //temp=root.postOrderTraversal(root);
+        //System.out.println("postOrder: "+temp);
+        String temp=root.inOrderTraversal(root);
         System.out.println("inOrder: "+temp);
     }
 }
