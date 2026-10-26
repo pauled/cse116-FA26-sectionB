@@ -15,7 +15,7 @@ public class BST<A>{
         if (this.root==null){
             return false;
         } else {
-            findHelper(value,this.root);
+            return findHelper(value,this.root);
         }
     }
     public boolean findHelper(A value,BTN<A> node){
