@@ -17,6 +17,18 @@ public class RunSpeedTests{
         }
         return out;
     }
+    public static int[] addRandoms(int size,int[] valsIn){
+        Random random=new Random();
+        int[] out=new int[size+valsIn.length];
+        for (int x=0;x<size;x++){
+            out[x]=random.nextInt();
+        }
+        for (int x=0;x<valsIn.length;x++){
+            out[x+size]=valsIn[x];
+        }
+        return out;
+    }
+    
     public static void printArray(int[] arrayIn){
         String out="";
         for (int x=0;x<arrayIn.length;x++){
@@ -40,16 +52,50 @@ public class RunSpeedTests{
         ArrayList<Integer> output=sorter.sort(list);
         System.out.println(output);
 
-        for (int size=10;size<1000000000;size*=10){
+        MergeSort2<Integer> sorterMerge=new MergeSort2<>(new IntIncreasing());
+
+
+        for (int size=10;size<1000000000;size*=5){
             int[] randInts=generateRandoms(size);
             //printArray(randInts);
+    
             timer.start();
             int[] sortedInts=MergeSort.mergeSort(randInts);
             timer.lap();
             //printArray(sortedInts);
             System.out.println("merge items: "+size+" "+timer);
 
+
             ArrayList<Integer> randIntegers=copyArray(randInts);
+            timer.start();
+            ArrayList<Integer> sorted2=sorterMerge.mergeSort(randIntegers);
+            timer.lap();
+            System.out.println("merge2 items: "+size+" "+timer);
+
+            timer.start();
+            int[] sortedBubble=BubbleSort.bubbleSort(randInts);
+            timer.lap();
+            System.out.println("bubble items: "+size+" "+timer);
+
+            int[] randInts2=addRandoms(10,sortedInts);
+
+            timer.start();
+            sortedInts=MergeSort.mergeSort(randInts2);
+            timer.lap();
+            //printArray(sortedInts);
+            System.out.println("add-merge items: "+size+" "+timer);
+
+
+            randIntegers=copyArray(sortedBubble);
+            timer.start();
+            sorted2=sorterMerge.mergeSort(randIntegers);
+            timer.lap();
+            System.out.println("add-merge2 items: "+size+" "+timer);
+
+            timer.start();
+            sortedBubble=BubbleSort.bubbleSort(randInts2);
+            timer.lap();
+            System.out.println("add-bubble items: "+size+" "+timer);
         }
     }
 }
