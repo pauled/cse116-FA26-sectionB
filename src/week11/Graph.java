@@ -23,6 +23,23 @@ public class Graph<N>{
     public String toString(){
         return this.adjacencyList.toString();
     }
+    public boolean connected(N from,N to){
+        if (!this.adjacencyList.containsKey(from)){
+            return false;
+        }
+        return this.adjacencyList.get(from).contains(to);
+    }
+    public boolean validPath(ArrayList<N> path){
+        if (path==null || path.size()==1|| path.size()==0){
+            return false;
+        }
+        for (int x=0;x<path.size()-1;x++){
+            if (!connected(path.get(x),path.get(x+1))){
+                return false;
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) {
         Graph<String> map=new Graph();
         //map.addNode("LAX");
@@ -43,6 +60,69 @@ public class Graph<N>{
 
         ArrayList<String> path1=new ArrayList<>(
             Arrays.asList("BUF","JFK","MIA","ATL"));
-        System.out.println(map.validPath(path1));
+        System.out.println("true: " +map.validPath(path1));
+
+        ArrayList<String> path2=new ArrayList<>(
+            Arrays.asList("BUF","JFK","LAX","BUF","ATL"));
+        System.out.println("false: "+map.validPath(path2));
+
+        path1=new ArrayList<>();
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=null;
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("BOB"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("BUF"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("BUF","JFK"));
+        System.out.println("true: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("BUF","LAX"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("BUF","BUF"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("BUF","LLL"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("MJK","LAX"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("ASD","EFD"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("BUF","LAX","JFK","ATL"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("LAX","JFK","ATL","BUF"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(Arrays.asList("BUF","LAX","JFK","ATL","BUF"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(
+            Arrays.asList("RRR","JFK","MIA","ATL"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(
+            Arrays.asList("BUF","JFK","MIA","LLL"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(
+            Arrays.asList("BUF","JFK","POI","ATL"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(
+            Arrays.asList("BUF","IOP","XCVg","ATL"));
+        System.out.println("false: " +map.validPath(path1));
+
+        path1=new ArrayList<>(
+            Arrays.asList("ATL","LAX","ATL"));
+        System.out.println("false: " +map.validPath(path1));
     }
 }
