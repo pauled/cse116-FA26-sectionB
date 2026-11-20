@@ -10,7 +10,11 @@ public class Student{
         this.state=state;
     }
     public void study(){
-        this.state.study();
+        if (this.state.getMentalLoad()<10){
+            this.state.study();
+        } else {
+         this.state=new BurnOut(this);   
+        }
     }
     public void getCloserExam(){
         this.state.getCloserExam();

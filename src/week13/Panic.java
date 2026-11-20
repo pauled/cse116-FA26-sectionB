@@ -6,6 +6,8 @@ public class Panic extends MentalState{
     }
     public void study(){
         this.brain.setState(new Calm(this.brain));
+        //this.mentalLoad+=1;
+        super.study();
     }
     public void getCloserExam(){
         System.out.println("all of my drinks are shaken and not stirred");
